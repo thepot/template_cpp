@@ -1,0 +1,11 @@
+---
+BasedOnStyle: Google
+ColumnLimit: '120'
+FixNamespaceComments: 'false'
+IndentWidth: '2'
+Language: Cpp
+NamespaceIndentation: All
+Standard: Auto
+UseTab: Never
+
+...

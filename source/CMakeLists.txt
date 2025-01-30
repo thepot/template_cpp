@@ -8,6 +8,8 @@ project(${PROJECT_NAME} CXX)
 
 # Inclusion des modules cmake lié au projet
 include(${CMAKE_SOURCE_DIR}/cmake/init.cmake)
+enable_testing()
+
 
 # ===================================================
 # Option du projet

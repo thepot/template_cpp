@@ -1,0 +1,30 @@
+
+name: commit workflow
+
+on:
+  push:
+    branches:
+      - "*"  # Push to any branch
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Configure CMake
+      working-directory: ${{github.workspace}}/source
+      run: cmake -B build -S . -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DENABLE_TESTS=true
+
+    - name: Build
+      working-directory: ${{github.workspace}}/source
+      run: cmake --build ${{github.workspace}}/source/build --config ${{env.BUILD_TYPE}}
+
+    - name: Test
+      working-directory: ${{github.workspace}}/source/build
+      run: ctest -C ${{env.BUILD_TYPE}}
+
